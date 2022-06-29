@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+        }
+        .modal-wrapper{
+            position: fixed;
+            background-color: rgb(90, 90, 90);
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: none;
+
+        }
+        .modal-wrapper.active{
+            display: block;
+        }
+        .modal-content{
+            position: absolute;
+            width: 80%;
+            left: 50%;
+            max-width: 600px;
+            top: 50%;
+            transform: translateX(-50%) translateY(-50%);
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+        }
+        .btn-close{
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            right: 15px;
+            top: 15px;
+            cursor: pointer;
+            /* 讓滑鼠移到 X有點擊標示 */
+        }
+    </style>
+</head>
+<body>
+    <a href="javascript:;" onclick="openModal();" id="open-modal">打開蓋板</a>
+   <div class="modal-wrapper">
+       <div class="modal-content">
+            <div id="btn-close-switch" class="btn-close">X</div>
+            廣告區塊
+        </div>
+   </div>
+
+
+   <script>
+        let modalWrapper = document.getElementsByClassName('modal-wrapper')[0]
+        let btnCloseSwitch = document.getElementById('btn-close-switch')
+        btnCloseSwitch.addEventListener('click',closeModal)
+        modalWrapper.addEventListener('click',closeModal)
+
+        function openModal(){
+            modalWrapper.classList.add('active')
+        } // openModal end
+
+        function closeModal(e){
+            // console.log(e.target)
+            // console.log(this)
+            if (e.target == this){
+                console.log('符合事件的選取器')
+                modalWrapper.classList.remove('actice')
+            }else{
+                console.log('不符合')
+            }
+
+        } //closeModal end
+   </script>
+</body>
+</html>
