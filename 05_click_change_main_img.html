@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>click_change_main_img</title>
+    <style>
+        .container{
+            margin: auto;
+            width: 80%;
+            max-width: 1140px;
+        }
+        .img-fluid{
+            width: 100%;
+        }
+        .thumbnails{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .thumbnails>img{
+            width: 100px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            border: 2px solid #fff;
+        }
+        .thumbnails>img.active{
+            border: 2px solid olive;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main-img">
+            <img class="img-fluid" src="public/images/Fondant au chocolat1.jpg" alt="">
+        </div>
+        <p id="product-description">dessert1</p>
+        <div class="thumbnails">
+            <img class="" src="public/images/Fondant au chocolat1.jpg" alt="dessert1">
+            <img class="" src="public/images/Calisson ig.jpg" alt="dessert2">
+            <img class="" src="public/images/Crêpe ig.jpg" alt="dessert3">
+            <img class="" src="public/images/Mont-blanc1.jpg" alt="dessert4">
+        </div>
+    </div>
+
+
+    <!-- jquery主程式 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    
+    <!-- 自定義 -->
+    <script>
+        $('.thumbnails>img').on('click',function(e){
+            // console.log(e.target)測試
+            //主圖ssrc屬性(attribute) 替換成 當前縮圖的src
+            $('.main-img>img').attr('src', $(this).attr('src'))
+            $('#product-description').text($(this).attr('alt'))//html()包含 text():純文字 val():表單值
+            $(this).addClass('active') //當前點擊縮圖套用active屬性
+            $(this).siblings().removeClass('active') //.siblings代表除了自己以外的兄弟 移除active屬性
+        })//.thumbnails>img end
+
+
+    </script>
+</body>
+</html>
